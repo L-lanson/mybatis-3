@@ -28,6 +28,8 @@ import org.apache.ibatis.reflection.wrapper.ObjectWrapper;
 import org.apache.ibatis.reflection.wrapper.ObjectWrapperFactory;
 
 /**
+ * 元对象，封装实际对象，对实际对象进行操作
+ * MetaObject -》 ObjectWrapper -》 MetaObject：实现递归
  * @author Clinton Begin
  */
 public class MetaObject {

@@ -27,12 +27,27 @@ import org.apache.ibatis.reflection.invoker.Invoker;
 import org.apache.ibatis.reflection.property.PropertyTokenizer;
 
 /**
+ * 对象包装器，可通过此包装器来对对象进行操作
+ * 对 对象元信息MetaObject 和 类元信息MetaClass 进行了包装，操作时可使用PropertyTokenizer进行属性分词
+ * 我觉得对 对象元信息MetaObject 进行包装即可，只是多了属性分词功能，委托PropertyTokenizer完成
+ * MetaObject通过BeanWrapper来操作属性，BeanWrapper调用MetaObject方法来操作属性，起到递归调用PropertyTokenizer进行属性分词，进而操作最终属性的作用
  * @author Clinton Begin
  */
 public class BeanWrapper extends BaseWrapper {
 
   private final Object object;
   private final MetaClass metaClass;
+
+  /**
+   * lanson添加的构造方法，可方便地理解代码
+   * 其实构造参数无需传入Object参数，MetaObject里面包含了Object
+   * @param metaObject
+   */
+  public BeanWrapper(MetaObject metaObject){
+    super(metaObject);
+    this.object = metaObject.getOriginalObject();
+    this.metaClass = MetaClass.forClass(object.getClass(), metaObject.getReflectorFactory());
+  }
 
   public BeanWrapper(MetaObject metaObject, Object object) {
     super(metaObject);

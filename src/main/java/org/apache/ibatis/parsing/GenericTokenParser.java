@@ -30,6 +30,11 @@ public class GenericTokenParser {
     this.handler = handler;
   }
 
+  /**
+   * 解析占位符，先解析出占位符名字，再调用TokenHandler解析出占位符的值
+   * @param text
+   * @return
+   */
   public String parse(String text) {
     if (text == null || text.isEmpty()) {
       return "";
