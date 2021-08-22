@@ -25,7 +25,7 @@ import org.apache.ibatis.cache.Cache;
 /**
  * Weak Reference cache decorator.
  * Thanks to Dr. Heinz Kabutz for his guidance here.
- *
+ * 弱引用缓存，实现原理跟软引用缓存差不多
  * @author Clinton Begin
  */
 public class WeakCache implements Cache {

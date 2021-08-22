@@ -61,10 +61,18 @@ public class TransactionalCache implements Cache {
     return delegate.getSize();
   }
 
+  /**
+   * 获取数据时直接从实际的缓存中获取
+   *
+   * @param key
+   *          The key
+   * @return
+   */
   @Override
   public Object getObject(Object key) {
     // issue #116
     Object object = delegate.getObject(key);
+    // 没命中缓存，往entriesMissedInCache里加数据，避免穿透到数据库
     if (object == null) {
       entriesMissedInCache.add(key);
     }
@@ -76,6 +84,12 @@ public class TransactionalCache implements Cache {
     }
   }
 
+  /**
+   * 添加数据直接往entriesToAddOnCommit添加，提交时才将数据放到实际的缓存中
+   * @param key
+   *          Can be any object but usually it is a {@link CacheKey}
+   * @param object
+   */
   @Override
   public void putObject(Object key, Object object) {
     entriesToAddOnCommit.put(key, object);

@@ -20,6 +20,8 @@ import java.util.concurrent.TimeUnit;
 import org.apache.ibatis.cache.Cache;
 
 /**
+ * 隔一段时间会清除缓存里的数据
+ * 清除动作由访问操作触发，包括增删查
  * @author Clinton Begin
  */
 public class ScheduledCache implements Cache {

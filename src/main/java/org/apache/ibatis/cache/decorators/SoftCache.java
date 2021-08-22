@@ -25,7 +25,7 @@ import org.apache.ibatis.cache.Cache;
 /**
  * Soft Reference cache decorator
  * Thanks to Dr. Heinz Kabutz for his guidance here.
- *
+ * 软引用缓存
  * @author Clinton Begin
  */
 public class SoftCache implements Cache {
@@ -69,10 +69,12 @@ public class SoftCache implements Cache {
     SoftReference<Object> softReference = (SoftReference<Object>) delegate.getObject(key);
     if (softReference != null) {
       result = softReference.get();
+      // 软连接被回收，将其从队列里面移除
       if (result == null) {
         delegate.removeObject(key);
       } else {
         // See #586 (and #335) modifications need more than a read lock
+        // 强引用最近被访问的numberOfHardLinks个value，避免被回收，可认为是热点数据
         synchronized (hardLinksToAvoidGarbageCollection) {
           hardLinksToAvoidGarbageCollection.addFirst(result);
           if (hardLinksToAvoidGarbageCollection.size() > numberOfHardLinks) {

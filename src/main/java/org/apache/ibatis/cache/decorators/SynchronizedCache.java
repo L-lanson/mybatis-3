@@ -18,6 +18,7 @@ package org.apache.ibatis.cache.decorators;
 import org.apache.ibatis.cache.Cache;
 
 /**
+ * 同步缓存，使用加锁的方式实现缓存的线程安全访问
  * @author Clinton Begin
  */
 public class SynchronizedCache implements Cache {

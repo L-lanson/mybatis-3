@@ -22,14 +22,14 @@ import org.apache.ibatis.cache.Cache;
 
 /**
  * FIFO (first in, first out) cache decorator.
- *
+ * 先进先出缓存，采用双端队列实现，每次存放数据时若元素个数大于size，则移除最老的数据
  * @author Clinton Begin
  */
 public class FifoCache implements Cache {
 
   private final Cache delegate;
   private final Deque<Object> keyList;
-  private int size;
+  private int size;//缓存中能保存数据的个数
 
   public FifoCache(Cache delegate) {
     this.delegate = delegate;

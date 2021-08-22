@@ -24,7 +24,7 @@ import org.apache.ibatis.cache.CacheException;
 
 /**
  * <p>Simple blocking decorator
- *
+ * 保证只有一个线程到数据库中查找指定key对应的数据，后续线程在查找key时发生阻塞，直至缓存中有数据
  * <p>Simple and inefficient version of EhCache's BlockingCache decorator.
  * It sets a lock over a cache key when the element is not found in cache.
  * This way, other threads will wait until this element is filled instead of hitting the database.
@@ -64,6 +64,14 @@ public class BlockingCache implements Cache {
     }
   }
 
+  /**
+   * 与putObject()方法相辅相成
+   * 若缓存中无数据，调用getObject()==null后再调用putObject()，然后在putObject()里面释放锁
+   * 若缓存中有数据，调用getObject()!=null后当场释放锁
+   * @param key
+   *          The key
+   * @return
+   */
   @Override
   public Object getObject(Object key) {
     acquireLock(key);
@@ -86,6 +94,11 @@ public class BlockingCache implements Cache {
     delegate.clear();
   }
 
+  /**
+   * 从缓存中读数据时调用，读完数据后调用releaseLock()释放锁
+   * 可保证任意时候都只有一个线程在读缓存
+   * @param key
+   */
   private void acquireLock(Object key) {
     CountDownLatch newLatch = new CountDownLatch(1);
     while (true) {

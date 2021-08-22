@@ -22,6 +22,8 @@ import org.apache.ibatis.cache.decorators.TransactionalCache;
 import org.apache.ibatis.util.MapUtil;
 
 /**
+ * 事务缓存管理器
+ * 维护实际缓存Cache和事务缓存TransactionalCache的映射关系，提供事务操作
  * @author Clinton Begin
  */
 public class TransactionalCacheManager {

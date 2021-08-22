@@ -23,6 +23,7 @@ import java.util.StringJoiner;
 import org.apache.ibatis.reflection.ArrayUtil;
 
 /**
+ * 缓存KEY
  * @author Clinton Begin
  */
 public class CacheKey implements Cloneable, Serializable {
@@ -72,11 +73,11 @@ public class CacheKey implements Cloneable, Serializable {
   public void update(Object object) {
     int baseHashCode = object == null ? 1 : ArrayUtil.hashCode(object);
 
-    count++;
-    checksum += baseHashCode;
+    count++;//组成key的元素个数
+    checksum += baseHashCode;//校验码，初始化为0,后续+=对象哈希值
     baseHashCode *= count;
 
-    hashcode = multiplier * hashcode + baseHashCode;
+    hashcode = multiplier * hashcode + baseHashCode;//key的哈希值=37×上一哈希值+对象哈希值
 
     updateList.add(object);
   }
@@ -98,6 +99,7 @@ public class CacheKey implements Cloneable, Serializable {
 
     final CacheKey cacheKey = (CacheKey) object;
 
+    // key的哈希值/校验码/元素个数不一致，均认为不是相同的key
     if (hashcode != cacheKey.hashcode) {
       return false;
     }
@@ -108,6 +110,7 @@ public class CacheKey implements Cloneable, Serializable {
       return false;
     }
 
+    // 校验每个元素的哈希值
     for (int i = 0; i < updateList.size(); i++) {
       Object thisObject = updateList.get(i);
       Object thatObject = cacheKey.updateList.get(i);

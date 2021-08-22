@@ -22,7 +22,8 @@ import org.apache.ibatis.cache.Cache;
 
 /**
  * Lru (least recently used) cache decorator.
- *
+ * 最近最少使用缓存，若缓存个数超限，淘汰最近最少使用的数据
+ * 使用LinkedHashMap实现，LinkedHashMap会将每次访问的key都放在最前面，插入时还会移除最末端的数据
  * @author Clinton Begin
  */
 public class LruCache implements Cache {
