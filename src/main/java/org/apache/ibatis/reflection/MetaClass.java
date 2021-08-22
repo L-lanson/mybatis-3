@@ -27,6 +27,9 @@ import org.apache.ibatis.reflection.invoker.MethodInvoker;
 import org.apache.ibatis.reflection.property.PropertyTokenizer;
 
 /**
+ * 类元信息，依赖Reflector获取及操作类元信息
+ * Reflector缓存了类的元信息，可以避免每次都通过反射去解析类，可以优化性能
+ * ReflectorFactory创建并缓存Reflector
  * @author Clinton Begin
  */
 public class MetaClass {

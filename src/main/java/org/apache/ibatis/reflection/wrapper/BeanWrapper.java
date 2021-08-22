@@ -176,7 +176,13 @@ public class BeanWrapper extends BaseWrapper {
     try {
       Invoker method = metaClass.getGetInvoker(prop.getName());
       try {
-        return method.invoke(object, NO_ARGUMENTS);
+        if (prop.hasNext()){
+          MetaObject metaValue = metaObject.metaObjectForProperty(prop.getIndexedName());
+          return metaValue.getValue(prop.getChildren());
+        }else {
+          // try里面只有这句话是原装的，其他都是我加的
+          return method.invoke(object, NO_ARGUMENTS);
+        }
       } catch (Throwable t) {
         throw ExceptionUtil.unwrapThrowable(t);
       }
@@ -192,7 +198,13 @@ public class BeanWrapper extends BaseWrapper {
       Invoker method = metaClass.getSetInvoker(prop.getName());
       Object[] params = {value};
       try {
-        method.invoke(object, params);
+        if (prop.hasNext()){
+          MetaObject metaValue = metaObject.metaObjectForProperty(prop.getIndexedName());
+          metaValue.setValue(prop.getChildren(), value);
+        }else {
+          // try里面只有这句话是原装的，其他都是我加的
+          method.invoke(object, params);
+        }
       } catch (Throwable t) {
         throw ExceptionUtil.unwrapThrowable(t);
       }

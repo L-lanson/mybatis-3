@@ -63,9 +63,14 @@ public class Reflector {
 
   public Reflector(Class<?> clazz) {
     type = clazz;
+    // 赋值无参构造函数给 defaultConstructor 属性
     addDefaultConstructor(clazz);
+    // 添加getter方法到getMethods（字段名->Invoker）/getTypes（字段名->Class），优先取返回值为子类的方法
     addGetMethods(clazz);
+    // 添加setter方法到setMethods（字段名->Invoker）/setTypes（字段名->Class），优先取第一个参数为子类的方法
     addSetMethods(clazz);
+    // 若字段没有getter方法，往getMethods（字段名->Invoker）/getTypes（字段名->Class）添加GetFieldInvoker/Class
+    // 若字段没有setter方法，往setMethods（字段名->Invoker）/setTypes（字段名->Class）添加SetFieldInvoker/Class
     addFields(clazz);
     readablePropertyNames = getMethods.keySet().toArray(new String[0]);
     writablePropertyNames = setMethods.keySet().toArray(new String[0]);
@@ -207,12 +212,16 @@ public class Reflector {
     if (src instanceof Class) {
       result = (Class<?>) src;
     } else if (src instanceof ParameterizedType) {
+      // 参数化类型，获取原始类型，如A<B, C>中的A.class
       result = (Class<?>) ((ParameterizedType) src).getRawType();
     } else if (src instanceof GenericArrayType) {
+      // 泛型数组，获取原始类型，如List<A>[]中的List<A> 或者 T[]中的T
       Type componentType = ((GenericArrayType) src).getGenericComponentType();
+      // 获取原始类型数组，如List<A>[]中的List[].class
       if (componentType instanceof Class) {
         result = Array.newInstance((Class<?>) componentType, 0).getClass();
       } else {
+        // 若是T[]，最终会返回Object.class
         Class<?> componentClass = typeToClass(componentType);
         result = Array.newInstance(componentClass, 0).getClass();
       }

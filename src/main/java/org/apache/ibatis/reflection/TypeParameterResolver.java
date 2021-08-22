@@ -26,12 +26,14 @@ import java.lang.reflect.WildcardType;
 import java.util.Arrays;
 
 /**
+ * 返回字段/方法入参/方法返回参数的实际类型
  * @author Iwao AVE!
  */
 public class TypeParameterResolver {
 
   /**
    * Resolve field type.
+   * 返回字段的实际类型，如List<U>[]
    *
    * @param field
    *          the field
