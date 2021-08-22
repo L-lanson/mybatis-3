@@ -18,7 +18,7 @@ public class SimpleTest {
     String resource = "mybatis-config.xml";
     InputStream inputStream = Resources.getResourceAsStream(resource);
     SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-    SqlSession session = sqlSessionFactory.openSession();
+    SqlSession session = sqlSessionFactory.openSession(false);
     User user = new User("1", "lanson", "深圳");
     session.insert("addUser", user);
     session.commit();
