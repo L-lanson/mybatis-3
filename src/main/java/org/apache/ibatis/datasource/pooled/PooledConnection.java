@@ -24,6 +24,7 @@ import java.sql.SQLException;
 import org.apache.ibatis.reflection.ExceptionUtil;
 
 /**
+ * Connection的代理，拦截close()方法，连接每次close时都将其放回DataSource
  * @author Clinton Begin
  */
 class PooledConnection implements InvocationHandler {
@@ -247,6 +248,7 @@ class PooledConnection implements InvocationHandler {
       return null;
     }
     try {
+      // 使用连接前校验是否可用
       if (!Object.class.equals(method.getDeclaringClass())) {
         // issue #579 toString() should never fail
         // throw an SQLException instead of a Runtime

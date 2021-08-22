@@ -33,6 +33,7 @@ import javax.sql.DataSource;
 import org.apache.ibatis.io.Resources;
 
 /**
+ * 数据源，每次获取连接都调用DriverManager.getConnection()新建连接
  * @author Clinton Begin
  * @author Eduardo Macarron
  */
