@@ -20,7 +20,7 @@ import java.net.URL;
 
 /**
  * A class to wrap access to multiple class loaders making them work as one
- *
+ * ClassLoader包装类，包装了多个ClassLoader，提供了ClassLoader的基本功能
  * @author Clinton Begin
  */
 public class ClassLoaderWrapper {
