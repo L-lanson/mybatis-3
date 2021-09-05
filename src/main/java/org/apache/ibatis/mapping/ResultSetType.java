@@ -27,9 +27,9 @@ public enum ResultSetType {
    * @since 3.5.0
    */
   DEFAULT(-1),
-  FORWARD_ONLY(ResultSet.TYPE_FORWARD_ONLY),
-  SCROLL_INSENSITIVE(ResultSet.TYPE_SCROLL_INSENSITIVE),
-  SCROLL_SENSITIVE(ResultSet.TYPE_SCROLL_SENSITIVE);
+  FORWARD_ONLY(ResultSet.TYPE_FORWARD_ONLY),//游标只能向前滚动，滚动过的地方内存会被释放
+  SCROLL_INSENSITIVE(ResultSet.TYPE_SCROLL_INSENSITIVE),//游标能向前向后滚动，访问过的数据在内存中不能释放，对修改不敏感
+  SCROLL_SENSITIVE(ResultSet.TYPE_SCROLL_SENSITIVE);//游标能向前向后滚动，访问过的数据在内存中不能释放，对修改敏感
 
   private final int value;
 

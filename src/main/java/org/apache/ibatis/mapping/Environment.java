@@ -20,7 +20,7 @@ import javax.sql.DataSource;
 import org.apache.ibatis.transaction.TransactionFactory;
 
 /**
- * 环境对象，里面的封装了数据源和事务管理器工厂
+ * 环境对象，里面封装了数据源和事务管理器工厂
  * 对应MyBatis配置文件里的
  * <environment></environment>
  * 标签

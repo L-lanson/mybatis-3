@@ -16,7 +16,7 @@
 package org.apache.ibatis.mapping;
 
 /**
- * 参数属性，可作为<parameter/>标签的属性，存储过程会用到
+ * 参数模式，可作为<parameter/>标签的属性，存储过程会用到
  * IN：输入
  * OUT：输出
  * INOUT：输入输出
