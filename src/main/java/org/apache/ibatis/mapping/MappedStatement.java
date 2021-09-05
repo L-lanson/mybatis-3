@@ -29,6 +29,13 @@ import org.apache.ibatis.scripting.LanguageDriver;
 import org.apache.ibatis.session.Configuration;
 
 /**
+ * 映射的语句， 封装mapper标签下增删改查语句的所有信息
+ * <mapper>
+ *   <insert></insert>
+ *   <delete></delete>
+ *   <update></update>
+ *   <select></select>
+ * </mapper>
  * @author Clinton Begin
  */
 public final class MappedStatement {

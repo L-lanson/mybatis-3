@@ -99,6 +99,7 @@ public class ParamNameResolver {
   }
 
   /**
+   * 获取参数名列表@Param指定或者实际参数名
    * Returns parameter names referenced by SQL providers.
    *
    * @return the names
@@ -108,6 +109,7 @@ public class ParamNameResolver {
   }
 
   /**
+   * 获取<参数名，参数值>对应的Map
    * <p>
    * A single non-special parameter is returned without a name.
    * Multiple parameters are named using the naming rule.
@@ -115,7 +117,7 @@ public class ParamNameResolver {
    * ...).
    * </p>
    *
-   * @param args
+   * @param args  方法参数
    *          the args
    * @return the named params
    */

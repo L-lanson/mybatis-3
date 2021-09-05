@@ -21,6 +21,12 @@ import java.util.Map;
 import org.apache.ibatis.session.Configuration;
 
 /**
+ * 辨别器，通过对结果进行switch...case...来获取实际value
+ * 对应Mapper文件的
+ * <resultMap>
+ *  <discriminator><discriminator/>
+ * <resultMap/>
+ * 标签
  * @author Clinton Begin
  */
 public class Discriminator {

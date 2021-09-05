@@ -24,6 +24,8 @@ import org.apache.ibatis.reflection.property.PropertyTokenizer;
 import org.apache.ibatis.session.Configuration;
 
 /**
+ * 绑定的SQL，封装了SQL语句、ParameterMapping、参数对象、额外参数这些信息
+ * 对应Mapper文件的SQL语句
  * An actual SQL String got from an {@link SqlSource} after having processed any dynamic content.
  * The SQL may have SQL placeholders "?" and an list (ordered) of an parameter mappings
  * with the additional information for each parameter (at least the property name of the input object to read

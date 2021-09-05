@@ -27,6 +27,7 @@ import org.apache.ibatis.logging.Log;
 import org.apache.ibatis.logging.LogFactory;
 
 /**
+ * 获取数据库ID
  * Vendor DatabaseId provider.
  *
  * It returns database product name as a databaseId.
@@ -60,9 +61,11 @@ public class VendorDatabaseIdProvider implements DatabaseIdProvider {
   }
 
   private String getDatabaseName(DataSource dataSource) throws SQLException {
+    //获取数据库产品名
     String productName = getDatabaseProductName(dataSource);
     if (this.properties != null) {
       for (Map.Entry<Object, Object> property : properties.entrySet()) {
+        //配置里面配置了数据库产品名，返回对应的值
         if (productName.contains((String) property.getKey())) {
           return (String) property.getValue();
         }
@@ -70,6 +73,7 @@ public class VendorDatabaseIdProvider implements DatabaseIdProvider {
       // no match, return null
       return null;
     }
+    //无相关配置，直接返回数据库产品名
     return productName;
   }
 

@@ -13,14 +13,19 @@
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
-package org.apache.ibatis.mapping;
+package com.lanson.ibatis.test;
 
-/**
- * resultMap子标签的其中两种类型
- * ID：对应<id/>子标签，是数据库返回数据的主键
- * CONSTRUCTOR：对应<constructor/>子标签，表明返回的某些字段可作为对象的构造参数
- * @author Clinton Begin
- */
-public enum ResultFlag {
-  ID, CONSTRUCTOR
+import org.apache.ibatis.io.VFS;
+import org.junit.Test;
+
+import java.io.IOException;
+
+public class VFSTest {
+  @Test
+  public void testVfs() throws IOException {
+    VFS vfs = VFS.getInstance();
+    System.out.println(vfs.getClass());
+    vfs.list("com").stream()
+      .forEach(System.out::println);
+  }
 }

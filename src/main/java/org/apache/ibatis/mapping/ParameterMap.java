@@ -21,6 +21,7 @@ import java.util.List;
 import org.apache.ibatis.session.Configuration;
 
 /**
+ * 参数Map，对应<parameterMap>标签 和 增删改查标签的parameterMap属性
  * @author Clinton Begin
  */
 public class ParameterMap {

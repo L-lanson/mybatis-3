@@ -35,6 +35,10 @@ import org.apache.ibatis.reflection.MetaObject;
 import org.apache.ibatis.reflection.SystemMetaObject;
 
 /**
+ * 缓存Builder，通过配置来build缓存
+ * 对应Mapper文件的
+ * <cache></cache>
+ * 标签
  * @author Clinton Begin
  */
 public class CacheBuilder {

@@ -16,6 +16,9 @@
 package org.apache.ibatis.mapping;
 
 /**
+ * 级联对象的获取策略
+ * LAZY：使用时才获取
+ * EAGER：查询时所有对象一起获取
  * @author Eduardo Macarron
  */
 public enum FetchType {

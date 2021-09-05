@@ -32,6 +32,7 @@ import org.apache.ibatis.reflection.ParamNameUtil;
 import org.apache.ibatis.session.Configuration;
 
 /**
+ * 结果Map，对应<resultMap/>标签
  * @author Clinton Begin
  */
 public class ResultMap {

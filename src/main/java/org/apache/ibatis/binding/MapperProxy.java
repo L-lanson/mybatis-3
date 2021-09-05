@@ -77,6 +77,14 @@ public class MapperProxy<T> implements InvocationHandler, Serializable {
     lookupConstructor = lookup;
   }
 
+  /**
+   * 代理方法，执行Method对应的MapperMethod.execute()
+   * @param proxy
+   * @param method
+   * @param args
+   * @return
+   * @throws Throwable
+   */
   @Override
   public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
     try {
@@ -132,6 +140,9 @@ public class MapperProxy<T> implements InvocationHandler, Serializable {
     Object invoke(Object proxy, Method method, Object[] args, SqlSession sqlSession) throws Throwable;
   }
 
+  /**
+   * 普通方法执行器
+   */
   private static class PlainMethodInvoker implements MapperMethodInvoker {
     private final MapperMethod mapperMethod;
 
@@ -146,6 +157,9 @@ public class MapperProxy<T> implements InvocationHandler, Serializable {
     }
   }
 
+  /**
+   * 接口默认方法执行器
+   */
   private static class DefaultMethodInvoker implements MapperMethodInvoker {
     private final MethodHandle methodHandle;
 

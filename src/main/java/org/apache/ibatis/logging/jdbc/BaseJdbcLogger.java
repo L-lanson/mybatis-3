@@ -40,12 +40,15 @@ import org.apache.ibatis.reflection.ArrayUtil;
  */
 public abstract class BaseJdbcLogger {
 
+  /* PreparedStatement的set方法集合（set方法的参数个数大于1） */
   protected static final Set<String> SET_METHODS;
+  /* 执行方法，execute、 executeUpdate、executeQuery、addBatch方法*/
   protected static final Set<String> EXECUTE_METHODS = new HashSet<>();
-
+  /* 数据库set列的K-V映射 */
   private final Map<Object, Object> columnMap = new HashMap<>();
-
+  /* 数据库set的列名 */
   private final List<Object> columnNames = new ArrayList<>();
+  /* 数据库set的列值 */
   private final List<Object> columnValues = new ArrayList<>();
 
   protected final Log statementLog;
