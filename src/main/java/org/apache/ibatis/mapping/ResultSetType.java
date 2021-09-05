@@ -28,8 +28,8 @@ public enum ResultSetType {
    */
   DEFAULT(-1),
   FORWARD_ONLY(ResultSet.TYPE_FORWARD_ONLY),//游标只能向前滚动，滚动过的地方内存会被释放
-  SCROLL_INSENSITIVE(ResultSet.TYPE_SCROLL_INSENSITIVE),//游标能向前向后滚动，访问过的数据在内存中不能释放，对修改不敏感
-  SCROLL_SENSITIVE(ResultSet.TYPE_SCROLL_SENSITIVE);//游标能向前向后滚动，访问过的数据在内存中不能释放，对修改敏感
+  SCROLL_INSENSITIVE(ResultSet.TYPE_SCROLL_INSENSITIVE),//游标能向前向后滚动，访问过的数据在内存中不能释放，对修改不敏感（数据库变化时，结果集不变）
+  SCROLL_SENSITIVE(ResultSet.TYPE_SCROLL_SENSITIVE);//游标能向前向后滚动，访问过的数据在内存中不能释放，对修改敏感（数据库变化时，结果集同步改变）
 
   private final int value;
 
