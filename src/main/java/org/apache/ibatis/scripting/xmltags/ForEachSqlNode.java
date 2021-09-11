@@ -21,6 +21,7 @@ import org.apache.ibatis.parsing.GenericTokenParser;
 import org.apache.ibatis.session.Configuration;
 
 /**
+ * <foreach/>标签对应的SqlNode
  * @author Clinton Begin
  */
 public class ForEachSqlNode implements SqlNode {

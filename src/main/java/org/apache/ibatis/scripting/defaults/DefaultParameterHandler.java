@@ -33,6 +33,7 @@ import org.apache.ibatis.type.TypeHandler;
 import org.apache.ibatis.type.TypeHandlerRegistry;
 
 /**
+ * 设置PreparedStatement的参数
  * @author Clinton Begin
  * @author Eduardo Macarron
  */

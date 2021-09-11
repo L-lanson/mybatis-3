@@ -22,6 +22,7 @@ import org.apache.ibatis.scripting.xmltags.XMLLanguageDriver;
 import org.apache.ibatis.session.Configuration;
 
 /**
+ * 创建RawSqlSource，感觉RawSqlSource和这个类都没有太大的存在意义，直接用DynamicSqlSource即可
  * As of 3.2.4 the default XML language is able to identify static statements
  * and create a {@link RawSqlSource}. So there is no need to use RAW unless you
  * want to make sure that there is not any dynamic tag for any reason.

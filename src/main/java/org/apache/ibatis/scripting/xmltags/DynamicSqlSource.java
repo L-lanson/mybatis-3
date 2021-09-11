@@ -21,6 +21,7 @@ import org.apache.ibatis.mapping.SqlSource;
 import org.apache.ibatis.session.Configuration;
 
 /**
+ * 动态SQL源，与RawSqlSource差别不大，只是BoundSql里面添加了additionalParameters
  * @author Clinton Begin
  */
 public class DynamicSqlSource implements SqlSource {

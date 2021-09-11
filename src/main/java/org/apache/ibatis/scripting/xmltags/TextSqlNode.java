@@ -23,6 +23,7 @@ import org.apache.ibatis.scripting.ScriptingException;
 import org.apache.ibatis.type.SimpleTypeRegistry;
 
 /**
+ * 文本SQL节点，用于封装String类型的SQL
  * @author Clinton Begin
  */
 public class TextSqlNode implements SqlNode {
@@ -38,6 +39,11 @@ public class TextSqlNode implements SqlNode {
     this.injectionFilter = injectionFilter;
   }
 
+  /**
+   * 若SQL语句中含有${}占位符，则为动态SQL
+   * GenericTokenParser只是用来判断SQL语句中是否含有占位符，并无实质性的解析作用
+   * @return
+   */
   public boolean isDynamic() {
     DynamicCheckerTokenParser checker = new DynamicCheckerTokenParser();
     GenericTokenParser parser = createParser(checker);

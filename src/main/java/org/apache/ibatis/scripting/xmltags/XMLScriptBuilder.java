@@ -30,6 +30,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 /**
+ * 解析带标签的SQL语句，组装成SQL源
  * @author Clinton Begin
  */
 public class XMLScriptBuilder extends BaseBuilder {
@@ -105,6 +106,9 @@ public class XMLScriptBuilder extends BaseBuilder {
     void handleNode(XNode nodeToHandle, List<SqlNode> targetContents);
   }
 
+  /**
+   * 解析<bind/>标签
+   */
   private class BindHandler implements NodeHandler {
     public BindHandler() {
       // Prevent Synthetic Access
@@ -119,6 +123,9 @@ public class XMLScriptBuilder extends BaseBuilder {
     }
   }
 
+  /**
+   * 解析<trim/>标签
+   */
   private class TrimHandler implements NodeHandler {
     public TrimHandler() {
       // Prevent Synthetic Access
@@ -136,6 +143,9 @@ public class XMLScriptBuilder extends BaseBuilder {
     }
   }
 
+  /**
+   * 解析<where/>标签
+   */
   private class WhereHandler implements NodeHandler {
     public WhereHandler() {
       // Prevent Synthetic Access
@@ -149,6 +159,9 @@ public class XMLScriptBuilder extends BaseBuilder {
     }
   }
 
+  /**
+   * 解析<set/>标签
+   */
   private class SetHandler implements NodeHandler {
     public SetHandler() {
       // Prevent Synthetic Access
@@ -162,6 +175,9 @@ public class XMLScriptBuilder extends BaseBuilder {
     }
   }
 
+  /**
+   * 解析<foreach/>标签
+   */
   private class ForEachHandler implements NodeHandler {
     public ForEachHandler() {
       // Prevent Synthetic Access
@@ -181,6 +197,9 @@ public class XMLScriptBuilder extends BaseBuilder {
     }
   }
 
+  /**
+   * 解析<if/>标签
+   */
   private class IfHandler implements NodeHandler {
     public IfHandler() {
       // Prevent Synthetic Access
@@ -195,6 +214,9 @@ public class XMLScriptBuilder extends BaseBuilder {
     }
   }
 
+  /**
+   * 解析<otherwise/>标签
+   */
   private class OtherwiseHandler implements NodeHandler {
     public OtherwiseHandler() {
       // Prevent Synthetic Access
@@ -207,6 +229,9 @@ public class XMLScriptBuilder extends BaseBuilder {
     }
   }
 
+  /**
+   * 解析<choose/>标签
+   */
   private class ChooseHandler implements NodeHandler {
     public ChooseHandler() {
       // Prevent Synthetic Access

@@ -27,6 +27,8 @@ import org.apache.ibatis.reflection.MetaObject;
 import org.apache.ibatis.session.Configuration;
 
 /**
+ * 动态上下文，封装了参数对象bindings和解析后的SQL语句
+ * 调用SqlNode的解析方法apply()时，会在sqlBuilder中拼接SQL语句
  * @author Clinton Begin
  */
 public class DynamicContext {

@@ -29,6 +29,7 @@ import org.apache.ibatis.scripting.defaults.RawSqlSource;
 import org.apache.ibatis.session.Configuration;
 
 /**
+ *  XML语言驱动器，用于解析XML标签，创建SQL源
  * @author Eduardo Macarron
  */
 public class XMLLanguageDriver implements LanguageDriver {

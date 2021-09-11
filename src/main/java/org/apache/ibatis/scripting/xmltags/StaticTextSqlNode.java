@@ -16,6 +16,7 @@
 package org.apache.ibatis.scripting.xmltags;
 
 /**
+ * 静态文本的SqlNode
  * @author Clinton Begin
  */
 public class StaticTextSqlNode implements SqlNode {
