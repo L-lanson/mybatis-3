@@ -50,6 +50,9 @@ import org.apache.ibatis.type.JdbcType;
 import org.apache.ibatis.type.TypeHandler;
 
 /**
+ * Mapper建造器协助器，将MapperBuilder解析出来的对象存放到Configuration中
+ * 将Mapper各Builder与Configuration连接起来
+ * 往Configuration添加由MapperBuilder解析出来的产物
  * @author Clinton Begin
  */
 public class MapperBuilderAssistant extends BaseBuilder {

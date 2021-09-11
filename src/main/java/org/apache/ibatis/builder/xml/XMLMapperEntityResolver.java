@@ -25,6 +25,7 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 /**
+ * 读取XML文件（Mapper.xml 和 mybatis-config.xml）
  * Offline entity resolver for the MyBatis DTDs.
  *
  * @author Clinton Begin

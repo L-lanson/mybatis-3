@@ -29,6 +29,7 @@ import org.apache.ibatis.type.TypeHandler;
 import org.apache.ibatis.type.TypeHandlerRegistry;
 
 /**
+ * 各Builder的基类，封装了公共方法 和 Configuration，对外暴露了Configuration
  * @author Clinton Begin
  */
 public abstract class BaseBuilder {

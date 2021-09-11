@@ -30,6 +30,7 @@ import org.apache.ibatis.scripting.LanguageDriver;
 import org.apache.ibatis.session.Configuration;
 
 /**
+ * 编程式SQL源，调用Provider类的相关方法组装SQL语句
  * @author Clinton Begin
  * @author Kazuki Shimizu
  */

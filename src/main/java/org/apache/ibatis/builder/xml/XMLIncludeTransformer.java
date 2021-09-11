@@ -31,6 +31,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 /**
+ * 递归包含所有SQL片段（解析SQL）
  * @author Frank D. Martinez [mnesarco]
  */
 public class XMLIncludeTransformer {

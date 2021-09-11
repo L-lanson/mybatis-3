@@ -50,6 +50,7 @@ import org.apache.ibatis.type.JdbcType;
 import org.apache.ibatis.type.TypeHandler;
 
 /**
+ * 解析Mapper.xml配置文件，解析出来的内容放在Configuration中
  * @author Clinton Begin
  * @author Kazuki Shimizu
  */

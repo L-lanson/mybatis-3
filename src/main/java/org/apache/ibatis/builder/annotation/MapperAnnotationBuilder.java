@@ -91,6 +91,7 @@ import org.apache.ibatis.type.TypeHandler;
 import org.apache.ibatis.type.UnknownTypeHandler;
 
 /**
+ * 解析注解配置的Mapper，解析出来的内容放在Configuration中
  * @author Clinton Begin
  * @author Kazuki Shimizu
  */
@@ -131,6 +132,9 @@ public class MapperAnnotationBuilder {
         try {
           parseStatement(method);
         } catch (IncompleteElementException e) {
+          //在解析到有依赖的节点，被依赖节点还没就绪时，会抛出IncompleteElementException异常
+          //收到未完成异常后先将当前方法放到Configuration.incompleteMethods中
+          //等所有Statement都被加载完成后再回来加载
           configuration.addIncompleteMethod(new MethodResolver(this, method));
         }
       }
