@@ -20,6 +20,8 @@ import java.util.Collections;
 import java.util.List;
 
 /**
+ * 拦截器链，pluginAll()方法用所有Interceptor给target对象创建动态代理
+ * 先添加的Interceptor后执行，最后才执行目标方法
  * @author Clinton Begin
  */
 public class InterceptorChain {

@@ -27,6 +27,7 @@ import org.apache.ibatis.reflection.ExceptionUtil;
 import org.apache.ibatis.util.MapUtil;
 
 /**
+ * 目标对象动态代理执行器
  * @author Clinton Begin
  */
 public class Plugin implements InvocationHandler {
